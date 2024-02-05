@@ -1,0 +1,56 @@
+/**
+ *   @file: node_iterator.template
+ * @author: Allison McKee
+ *   @date: 11-03-2023
+ *  @brief: This is the template file for the node_iterator class.
+ */
+
+#include <iostream>
+
+// == Operator
+template<class T>
+bool node_iterator<T>::operator ==(node_iterator<T> other)const{
+    return current == other.current;
+}
+
+// != Operator
+template<class T>
+bool node_iterator<T>::operator !=(node_iterator<T> other)const{
+    return current != other.current;
+}
+
+// * Operator
+template<class T>
+T node_iterator<T>::operator *()const{
+    return current -> data();
+}
+
+// ++() Operator
+template<class T>
+node_iterator<T> node_iterator<T>::operator ++(){
+    current = current -> next();
+    return *this;
+}
+
+// ++(int) Operator
+template<class T>
+node_iterator<T> node_iterator<T>::operator ++(int){
+    node_iterator<T> original(*this);
+    current = current -> next();
+    return original;
+}
+
+// --() Operator
+template<class T>
+node_iterator<T> node_iterator<T>::operator --(){
+    current = current -> previous();
+    return *this;
+}
+
+// --(int) Operator
+template<class T>
+node_iterator<T> node_iterator<T>::operator --(int){
+    node_iterator<T> original(*this);
+    current = current -> previous();
+    return original;
+}
